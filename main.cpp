@@ -1,0 +1,161 @@
+#include <iostream>
+#include "Node.h"
+#include "LinkedList.h"
+
+using namespace std;
+
+static void test_append() {
+
+    // Function to convert nullptr to 0 for comparison
+    auto ptrToNum = [](Node* ptr) -> string {
+        return (ptr == nullptr) ? "0 (nullptr)" : to_string(ptr->value);
+    };
+
+    // Test 1: Append To Non-Empty List
+    {
+        cout << "\n------ LinkedList Test: Append To Non-Empty List ------\n";
+
+        LinkedList ll(1);
+        cout << "Before append: ";
+        ll.printList();
+
+        ll.append(2);
+
+        cout << "After append: ";
+        ll.printList();
+
+        cout << "Expected Length: 2, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Tail Value: 2, Actual Tail Value: " << ll.getTail()->value << endl;
+        cout << "Expected Head Value: 1, Actual Head Value: " << ll.getHead()->value << endl;
+    }
+
+    // Test 2: Append To Empty List
+    {
+        cout << "\n-------- LinkedList Test: Append To Empty List --------\n";
+
+        LinkedList ll(1);
+        ll.makeEmpty();  // Make list empty
+        cout << "Before append: ";
+        ll.printList();
+
+        ll.append(2);
+
+        cout << "After append: ";
+        ll.printList();
+
+        cout << "Expected Length: 1, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Tail Value: 2, Actual Tail Value: " << ll.getTail()->value << endl;
+        cout << "Expected Head Value: 2, Actual Head Value: " << ll.getHead()->value << endl;
+    }
+
+    // Test 3: Multiple Appends
+    {
+        cout << "\n-------- LinkedList Test: Multiple Appends --------\n";
+
+        LinkedList ll(1);
+        cout << "Before append: ";
+        ll.printList();
+
+        ll.append(2);
+        ll.append(3);
+
+        cout << "After append: ";
+        ll.printList();
+
+        cout << "Expected Length: 3, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Tail Value: 3, Actual Tail Value: " << ll.getTail()->value << endl;
+        cout << "Expected Head Value: 1, Actual Head Value: " << ll.getHead()->value << endl;
+    }
+
+}// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+static void test_deleteLast() {
+
+    // Function to convert nullptr to 0 for comparison
+    auto ptrToNum = [](Node* ptr) -> string {
+        return (ptr == nullptr) ? "0 (nullptr)" : to_string(ptr->value);
+    };
+
+    // Test 1: DeleteLastSingleElementList
+    {
+        cout << "\n------ LinkedList Test: DeleteLastSingleElementList ------\n";
+        LinkedList ll(1);
+
+        cout << "Before deleteLast: ";
+        ll.printList();
+
+        ll.deleteLast();
+
+        cout << "After deleteLast: ";
+        ll.printList();
+
+        cout << "Expected Length: 0, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Head: 0 (nullptr), Actual Head: " << ptrToNum(ll.getHead()) << endl;
+        cout << "Expected Tail: 0 (nullptr), Actual Tail: " << ptrToNum(ll.getTail()) << endl;
+    }
+
+    // Test 2: DeleteLastMultipleElementList
+    {
+        cout << "\n----- LinkedList Test: DeleteLastMultipleElementList -----\n";
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Before deleteLast: ";
+        ll.printList();
+
+        ll.deleteLast();
+
+        cout << "After deleteLast: ";
+        ll.printList();
+
+        cout << "Expected Length: 2, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Tail Value: 2, Actual Tail Value: " << ll.getTail()->value << endl;
+    }
+
+    // Test 3: DeleteLastEmptyList
+    {
+        cout << "\n-------- LinkedList Test: DeleteLastEmptyList --------\n";
+        LinkedList ll(1);
+        ll.makeEmpty();
+
+        cout << "Before deleteLast: ";
+        ll.printList();
+
+        ll.deleteLast();
+
+        cout << "After deleteLast: ";
+        ll.printList();
+
+        cout << "Expected Length: 0, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Head: 0 (nullptr), Actual Head: " << ptrToNum(ll.getHead()) << endl;
+        cout << "Expected Tail: 0 (nullptr), Actual Tail: " << ptrToNum(ll.getTail()) << endl;
+    }
+
+    // Test 4: RepeatedDeleteLast
+    {
+        cout << "\n------- LinkedList Test: RepeatedDeleteLast -------\n";
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Before deleteLast: ";
+        ll.printList();
+
+        ll.deleteLast();
+        ll.deleteLast();
+        ll.deleteLast();
+
+        cout << "After deleteLast: ";
+        ll.printList();
+
+        cout << "Expected Length: 0, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Head: 0 (nullptr), Actual Head: " << ptrToNum(ll.getHead()) << endl;
+        cout << "Expected Tail: 0 (nullptr), Actual Tail: " << ptrToNum(ll.getTail()) << endl;
+    }
+
+}
+
+int main() {
+    test_deleteLast();
+    return 0;
+}
