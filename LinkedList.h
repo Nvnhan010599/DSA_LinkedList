@@ -49,6 +49,9 @@ public:
 
     /* Get */
     [[nodiscard]] Node* get(int index) const;
+
+    /* Set */
+    bool set(int index, int value) const;
 };
 
 

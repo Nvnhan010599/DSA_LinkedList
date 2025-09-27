@@ -146,3 +146,14 @@ Node * LinkedList::get(const int index) const {
     return returnNode;
 }
 
+bool LinkedList::set(int index, int value) const {
+    auto NodeOfIndex = get(index);
+    if (NodeOfIndex != nullptr) {
+        NodeOfIndex->value = value;
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+

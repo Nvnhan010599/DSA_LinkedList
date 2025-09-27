@@ -362,8 +362,125 @@ static void test_Get() {
     }
 
 }
+
+static void test_Set() {
+    // Function to convert nullptr to 0 for comparison
+    auto ptrToNum = [](Node* ptr) -> string {
+        return (ptr == nullptr) ? "0 (nullptr)" : to_string(ptr->value);
+    };
+
+    // Helper function to check test result
+    auto checkTestResult = [](bool condition) {
+        cout << (condition ? "PASS" : "FAIL") << endl;
+    };
+
+    // Test 1: SetElementInNonEmptyList
+    {
+        cout << "\n------ LinkedList Test: SetElementInNonEmptyList ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Before: ";
+        ll.printList();
+
+        bool result = ll.set(1, 4);
+
+        cout << "set(1, 4)\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(result && ll.get(1)->value == 4);
+    }
+
+    // Test 2: SetElementInSingleItemList
+    {
+        cout << "\n------ LinkedList Test: SetElementInSingleItemList ------\n";
+
+        LinkedList ll(1);
+
+        cout << "Before: ";
+        ll.printList();
+
+        bool result = ll.set(0, 2);
+
+        cout << "set(0, 2)\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(result && ll.get(0)->value == 2);
+    }
+
+    // Test 3: SetElementInEmptyList
+    {
+        cout << "\n------ LinkedList Test: SetElementInEmptyList ------\n";
+
+        LinkedList ll(1);
+        ll.makeEmpty();
+
+        cout << "Before: ";
+        ll.printList();
+
+        bool result = ll.set(0, 2);
+
+        cout << "set(0, 2)\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(!result);
+    }
+
+    // Test 4: SetIndexOutOfBounds
+    {
+        cout << "\n------ LinkedList Test: SetIndexOutOfBounds ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Before: ";
+        ll.printList();
+
+        bool result = ll.set(3, 4);
+
+        cout << "set(3, 4)\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(!result);
+    }
+
+    // Test 5: SetElementAndCheckOtherValues
+    {
+        cout << "\n------ LinkedList Test: SetElementAndCheckOtherValues ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.set(1, 4);
+
+        cout << "set(1, 4)\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        bool result = (ll.get(0)->value == 1) && (ll.get(2)->value == 3);
+        checkTestResult(result);
+    }
+
+}
+
 int main() {
 
-    test_Get();
+    test_Set();
     return 0;
 }
