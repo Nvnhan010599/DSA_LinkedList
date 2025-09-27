@@ -111,3 +111,18 @@ void LinkedList::prepend(int value_) {
     length++;
 }
 
+void LinkedList::deleteFirst() {
+    const auto temp = head;
+    if (length == 1) {
+        deleteLast();
+    }
+    else if (length != 0) {
+        head = head->next;
+        delete temp;
+        length--;
+    }
+    else {
+        /* Do nothing */
+    }
+}
+

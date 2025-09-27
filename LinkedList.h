@@ -43,6 +43,9 @@ public:
 
     /* Prepend */
     void prepend(int value_);
+
+    /* Delete First */
+    void deleteFirst();
 };
 
 

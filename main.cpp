@@ -219,8 +219,151 @@ static void test_prepend() {
     }
 
 }
+
+static void test_deleteFirst() {
+
+    // Function to convert nullptr to 0 for comparison
+    auto ptrToNum = [](Node* ptr) -> string {
+        return (ptr == nullptr) ? "0 (nullptr)" : to_string(ptr->value);
+    };
+
+    // Test 1: DeleteFirstFromNonEmptyList
+    {
+        cout << "\n------- LinkedList Test: DeleteFirstFromNonEmptyList -------\n";
+        LinkedList ll(1);
+        ll.append(2);
+
+        cout << "Before deleteFirst: ";
+        ll.printList();
+
+        ll.deleteFirst();
+
+        cout << "After deleteFirst: ";
+        ll.printList();
+
+        cout << "Expected Length: 1, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Head Value: 2, Actual Head Value: " << ll.getHead()->value << endl;
+        cout << "Expected Tail Next: 0 (nullptr), Actual Tail Next: " << ptrToNum(ll.getTail()->next) << endl;
+    }
+
+    // Test 2: DeleteFirstFromSingleItemList
+    {
+        cout << "\n------- LinkedList Test: DeleteFirstFromSingleItemList -------\n";
+        LinkedList ll(1);
+
+        cout << "Before deleteFirst: ";
+        ll.printList();
+
+        ll.deleteFirst();
+
+        cout << "After deleteFirst: ";
+        ll.printList();
+
+        cout << "Expected Length: 0, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Head: 0 (nullptr), Actual Head: " << ptrToNum(ll.getHead()) << endl;
+        cout << "Expected Tail: 0 (nullptr), Actual Tail: " << ptrToNum(ll.getTail()) << endl;
+    }
+
+    // Test 3: DeleteFirstFromEmptyList
+    {
+        cout << "\n-------- LinkedList Test: DeleteFirstFromEmptyList --------\n";
+        LinkedList ll(1);
+        ll.makeEmpty();
+
+        cout << "Before deleteFirst: ";
+        ll.printList();
+
+        ll.deleteFirst();
+
+        cout << "After deleteFirst: ";
+        ll.printList();
+
+        cout << "Expected Length: 0, Actual Length: " << ll.getLength() << endl;
+        cout << "Expected Head: 0 (nullptr), Actual Head: " << ptrToNum(ll.getHead()) << endl;
+        cout << "Expected Tail: 0 (nullptr), Actual Tail: " << ptrToNum(ll.getTail()) << endl;
+    }
+
+}
+
+static void test_Get() {
+
+    // Function to convert nullptr to 0 for comparison
+    auto ptrToNum = [](Node* ptr) -> string {
+        return (ptr == nullptr) ? "0 (nullptr)" : to_string(ptr->value);
+    };
+
+    // Test 1: GetFromNonEmptyList
+    {
+        cout << "\n--------- LinkedList Test: GetFromNonEmptyList ---------\n";
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Current List: ";
+        ll.printList();
+
+        int index = 1;
+        cout << "Get node at index: " << index << endl;
+
+        Node* result = ll.get(index);
+
+        cout << "Value of returned node: " << result->value << endl;
+    }
+
+    // Test 2: GetFromSingleItemList
+    {
+        cout << "\n--------- LinkedList Test: GetFromSingleItemList ---------\n";
+        LinkedList ll(1);
+
+        cout << "Current List: ";
+        ll.printList();
+
+        int index = 0;
+        cout << "Get node at index: " << index << endl;
+
+        Node* result = ll.get(index);
+
+        cout << "Value of returned node: " << result->value << endl;
+    }
+
+    // Test 3: GetFromEmptyList
+    {
+        cout << "\n--------- LinkedList Test: GetFromEmptyList ---------\n";
+        LinkedList ll(1);
+        ll.makeEmpty();
+
+        cout << "Current List: ";
+        ll.printList();
+
+        int index = 0;
+        cout << "Get node at index: " << index << endl;
+
+        Node* result = ll.get(index);
+
+        cout << "Value of returned node: " << ptrToNum(result) << endl;
+    }
+
+    // Test 4: GetIndexOutOfBounds
+    {
+        cout << "\n--------- LinkedList Test: GetIndexOutOfBounds ---------\n";
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Current List: ";
+        ll.printList();
+
+        int index = 3;
+        cout << "Get node at index: " << index << endl;
+
+        Node* result = ll.get(index);
+
+        cout << "Value of returned node: " << ptrToNum(result) << endl;
+    }
+
+}
 int main() {
 
-    test_prepend();
+    test_deleteFirst();
     return 0;
 }
