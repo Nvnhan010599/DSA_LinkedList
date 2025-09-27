@@ -40,6 +40,9 @@ public:
 
     /* Delete last */
     void deleteLast();
+
+    /* Prepend */
+    void prepend(int value_);
 };
 
 

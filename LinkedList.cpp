@@ -99,3 +99,15 @@ void LinkedList::deleteLast() {
     }
 }
 
+void LinkedList::prepend(int value_) {
+    auto newNode = new Node(value_);
+    if (length == 0) {
+        head = newNode;
+        tail = newNode;
+    }else {
+        newNode->next = head;
+        head = newNode;
+    }
+    length++;
+}
+
