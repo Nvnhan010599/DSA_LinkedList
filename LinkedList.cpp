@@ -146,7 +146,7 @@ Node * LinkedList::get(const int index) const {
     return returnNode;
 }
 
-bool LinkedList::set(int index, int value) const {
+bool LinkedList::set(int index, int value) {
     auto NodeOfIndex = get(index);
     if (NodeOfIndex != nullptr) {
         NodeOfIndex->value = value;
@@ -154,6 +154,30 @@ bool LinkedList::set(int index, int value) const {
     }
     else {
         return false;
+    }
+}
+
+bool LinkedList::insert(int index, int value) {
+    auto temp = head;
+    Node * newNode = new Node(value);
+
+    if (index < 0 || index > length){
+        return false;
+    }
+    else {
+        if (index == 0) {
+            prepend(value);
+        }
+        else if (index == length) {
+            append(value);
+        }
+        else {
+            temp = get(index - 1);
+            newNode->next = temp->next;
+            temp->next = newNode;
+        }
+        length++;
+        return true;
     }
 }
 

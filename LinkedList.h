@@ -51,7 +51,10 @@ public:
     [[nodiscard]] Node* get(int index) const;
 
     /* Set */
-    bool set(int index, int value) const;
+    [[nodiscard]] bool set(int index, int value);
+
+    /* Insert */
+    bool insert(int index, int value);
 };
 
 
