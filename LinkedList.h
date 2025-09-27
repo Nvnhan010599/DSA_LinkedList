@@ -46,6 +46,9 @@ public:
 
     /* Delete First */
     void deleteFirst();
+
+    /* Get */
+    [[nodiscard]] Node* get(int index) const;
 };
 
 

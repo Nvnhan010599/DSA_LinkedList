@@ -126,3 +126,23 @@ void LinkedList::deleteFirst() {
     }
 }
 
+Node * LinkedList::get(const int index) const {
+    Node* returnNode;
+
+    if (0 <= index && index < length) {
+        /* Initial return node as head */
+        returnNode = head;
+
+        /* Go to index Node */
+        for (int i = 1; i <= index; i++) {
+            returnNode = returnNode->next;
+        }
+    }
+    else {
+        /* Return null pointer */
+        returnNode = nullptr;
+    }
+
+    return returnNode;
+}
+

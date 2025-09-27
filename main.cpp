@@ -364,6 +364,6 @@ static void test_Get() {
 }
 int main() {
 
-    test_deleteFirst();
+    test_Get();
     return 0;
 }
