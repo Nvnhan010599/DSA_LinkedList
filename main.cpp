@@ -745,8 +745,112 @@ static void test_deleteNode() {
     }
 
 }
+static void test_Reverse() {
+
+    // Helper function to check test result
+    auto checkTestResult = [](bool condition) {
+        cout << (condition ? "PASS" : "FAIL") << endl;
+    };
+
+    // Test 1: ReverseMultipleElementList
+    {
+        cout << "\n------ LinkedList Test: ReverseMultipleElementList ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.reverse();
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getHead()->value == 3 && ll.getTail()->value == 1 && ll.getLength() == 3);
+    }
+
+    // Test 2: ReverseSingleElement
+    {
+        cout << "\n------ LinkedList Test: ReverseSingleElement ------\n";
+
+        LinkedList ll(1);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.reverse();
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getHead()->value == 1 && ll.getTail()->value == 1 && ll.getLength() == 1);
+    }
+
+    // Test 3: ReverseListWithTwoElements
+    {
+        cout << "\n------ LinkedList Test: ReverseListWithTwoElements ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.reverse();
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getHead()->value == 2 && ll.getTail()->value == 1 && ll.getLength() == 2);
+    }
+
+    // Test 4: ReverseListMultipleTimes
+    {
+        cout << "\n------ LinkedList Test: ReverseListTwice ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.reverse();
+        ll.reverse();
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getHead()->value == 1 && ll.getTail()->value == 3 && ll.getLength() == 3);
+    }
+
+    // Test 5: CheckIntegrityAfterReverse
+    {
+        cout << "\n------ LinkedList Test: CheckIntegrityAfterReverse ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.reverse();
+
+        cout << "After: ";
+        ll.printList();
+
+        Node* head = ll.getHead();
+        bool result = head->value == 3 && head->next->value == 2 && head->next->next->value == 1 && head->next->next->next == nullptr;
+
+        checkTestResult(result);
+    }
+
+}
 int main() {
 
-    test_deleteNode();
+    test_Reverse();
     return 0;
 }

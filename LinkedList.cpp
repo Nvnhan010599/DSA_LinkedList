@@ -206,3 +206,27 @@ void LinkedList::deleteNode(const int index) {
     else {}
 }
 
+void LinkedList::reverse() {
+    Node* prevNode = nullptr;
+    Node* nextNode = nullptr;
+    Node* currentNode = nullptr;
+
+    /* Swap head and tail each others */
+    currentNode = head;
+    head = tail;
+    tail = currentNode;
+
+    /* Start assign reverse */
+    currentNode = tail;
+    for (int i = 0; i < length; i++) {
+        /* Get next node */
+        nextNode = currentNode->next;
+        /* Link next node of current node to previous node */
+        currentNode->next = prevNode;
+        /* Assign previous node is current node */
+        prevNode = currentNode;
+        /* Assign current node is next node. Incase index is last node, currentNode is null */
+        currentNode = nextNode;
+    }
+}
+

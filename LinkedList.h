@@ -59,6 +59,9 @@ public:
     /* Delete node */
     void deleteNode(int index);
 
+    /* Reverse */
+    void reverse();
+
 };
 
 
