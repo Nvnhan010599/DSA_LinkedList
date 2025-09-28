@@ -55,6 +55,10 @@ public:
 
     /* Insert */
     bool insert(int index, int value);
+
+    /* Delete node */
+    void deleteNode(int index);
+
 };
 
 

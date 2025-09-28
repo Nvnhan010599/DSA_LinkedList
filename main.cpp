@@ -610,8 +610,143 @@ static void test_Insert() {
     }
 
 }
+
+static void test_deleteNode() {
+    // Function to convert nullptr to 0 for comparison
+    auto ptrToNum = [](Node* ptr) -> string {
+        return (ptr == nullptr) ? "0 (nullptr)" : to_string(ptr->value);
+    };
+
+    // Helper function to check test result
+    auto checkTestResult = [](bool condition) {
+        cout << (condition ? "PASS" : "FAIL") << endl;
+    };
+
+    // ... previous tests ...
+
+    // Test 1: DeleteFromBeginning
+    {
+        cout << "\n------ LinkedList Test: DeleteFromBeginning ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.deleteNode(0);
+
+        cout << "deleteNode( 0 )\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getLength() == 1 && ll.getHead()->value == 2);
+    }
+
+    // Test 2: DeleteFromEnd
+    {
+        cout << "\n------ LinkedList Test: DeleteFromEnd ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.deleteNode(1);
+
+        cout << "deleteNode( 1 )\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getLength() == 1 && ll.getHead()->value == 1);
+    }
+
+    // Test 3: DeleteFromMiddle
+    {
+        cout << "\n------ LinkedList Test: DeleteFromMiddle ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+        ll.append(3);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.deleteNode(1);
+
+        cout << "deleteNode( 1 )\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getLength() == 2 && ll.get(1)->value == 3);
+    }
+
+    // Test 4: DeleteOutOfBounds
+    {
+        cout << "\n------ LinkedList Test: DeleteOutOfBounds ------\n";
+
+        LinkedList ll(1);
+        ll.append(2);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.deleteNode(2);
+
+        cout << "deleteNode( 2 )\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getLength() == 2);
+    }
+
+    // Test 5: DeleteFromEmptyList
+    {
+        cout << "\n------ LinkedList Test: DeleteFromEmptyList ------\n";
+
+        LinkedList ll(1);
+        ll.makeEmpty();
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.deleteNode(0);
+
+        cout << "deleteNode( 0 )\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getLength() == 0);
+    }
+
+    // Test 6: DeleteInvalidIndexNegative
+    {
+        cout << "\n------ LinkedList Test: DeleteInvalidIndexNegative ------\n";
+
+        LinkedList ll(1);
+
+        cout << "Before: ";
+        ll.printList();
+
+        ll.deleteNode(-1);
+
+        cout << "deleteNode( -1 )\n";
+
+        cout << "After: ";
+        ll.printList();
+
+        checkTestResult(ll.getLength() == 1);
+    }
+
+}
 int main() {
 
-    test_Insert();
+    test_deleteNode();
     return 0;
 }

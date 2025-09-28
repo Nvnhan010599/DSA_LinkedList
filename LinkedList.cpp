@@ -181,3 +181,28 @@ bool LinkedList::insert(int index, int value) {
     }
 }
 
+void LinkedList::deleteNode(const int index) {
+
+    auto prev = head;
+    auto current = head;
+
+    /* Delete for first node */
+    if (index == 0) {
+        deleteFirst();
+    }
+    /* Delete for last node */
+    else if (index == length - 1) {
+        deleteLast();
+    }
+    /* Delete for valid node */
+    else if ( 0 < index && index < length) {
+        prev = get(index - 1);
+        current = prev->next;
+        prev->next = current->next;
+        delete current;
+        length--;
+    }
+    /* Do nothing for invalid index */
+    else {}
+}
+
