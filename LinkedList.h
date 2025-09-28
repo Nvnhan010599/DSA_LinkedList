@@ -64,6 +64,9 @@ public:
 
     /* Find Middle Node without using length */
     Node* findMiddleNode() const;
+
+    /* Check Has Loop */
+    bool hasLoop() const;
 };
 
 

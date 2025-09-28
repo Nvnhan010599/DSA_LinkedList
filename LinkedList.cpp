@@ -241,3 +241,28 @@ Node * LinkedList::findMiddleNode() const {
     return middleNode;
 }
 
+bool LinkedList::hasLoop() const {
+    auto Slow_ptr = head;
+    auto Fast_ptr = head;
+
+    bool isHasLoop = false;
+    bool isCheck = true;
+    bool isInit = true;
+
+    while (isCheck == true) {
+        if((Fast_ptr == nullptr) || (Fast_ptr->next == nullptr)) {
+            isCheck = false;
+        }
+        else if((Slow_ptr == Fast_ptr) && (isInit != true)) {
+            isHasLoop = true;
+            isCheck = false;
+        }
+        else {
+            Slow_ptr = Slow_ptr->next;
+            Fast_ptr = Fast_ptr->next->next;
+            isInit = false;
+        }
+    }
+    return isHasLoop;
+}
+
