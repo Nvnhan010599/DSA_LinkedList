@@ -62,6 +62,8 @@ public:
     /* Reverse */
     void reverse();
 
+    /* Find Middle Node without using length */
+    Node* findMiddleNode() const;
 };
 
 

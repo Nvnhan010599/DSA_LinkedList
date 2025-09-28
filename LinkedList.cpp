@@ -230,3 +230,14 @@ void LinkedList::reverse() {
     }
 }
 
+Node * LinkedList::findMiddleNode() const {
+    auto sliceNode = head;
+    auto middleNode = head;
+
+    while ((sliceNode != nullptr) && (sliceNode != tail)) {
+        middleNode = middleNode->next;
+        sliceNode = sliceNode->next->next;
+    }
+    return middleNode;
+}
+
