@@ -266,3 +266,25 @@ bool LinkedList::hasLoop() const {
     return isHasLoop;
 }
 
+Node * LinkedList::findKthFromEnd(const int k) {
+    auto slow_ptr = head;
+    auto fast_ptr = head;
+
+    int count = 0;
+
+    /* First step to make kth for fast and slow node */
+    while ((fast_ptr != nullptr)&& (count < k)) {
+        fast_ptr = fast_ptr->next;
+        count++;
+    }
+
+    /* Second step to slice both fast and slow mode with kth distance */
+    while (fast_ptr != nullptr) {
+        fast_ptr = fast_ptr->next;
+        slow_ptr = slow_ptr->next;
+    }
+
+    /* Return slow node when k less than length of list */
+    return (count == k)? slow_ptr : nullptr;
+}
+

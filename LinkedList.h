@@ -67,6 +67,9 @@ public:
 
     /* Check Has Loop */
     bool hasLoop() const;
+
+    /* Find Kth Node From End */
+    Node* findKthFromEnd(int k);
 };
 
 
