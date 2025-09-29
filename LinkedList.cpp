@@ -288,3 +288,24 @@ Node * LinkedList::findKthFromEnd(const int k) {
     return (count == k)? slow_ptr : nullptr;
 }
 
+void LinkedList::removeDuplicates() {
+    auto currentNode = head;
+    auto runnerNode = head;
+
+    while (currentNode != nullptr) {
+        runnerNode = currentNode;
+        while (runnerNode->next != nullptr) {
+            if (currentNode->value == runnerNode->next->value) {
+                auto tempNode = runnerNode->next;
+                runnerNode->next = runnerNode->next->next;
+                delete tempNode;
+                length--;
+            }
+            else {
+                runnerNode = runnerNode->next;
+            }
+        }
+        currentNode = currentNode->next;
+    }
+}
+

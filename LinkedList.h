@@ -70,6 +70,10 @@ public:
 
     /* Find Kth Node From End */
     Node* findKthFromEnd(int k);
+
+    /* Remove duplicate */
+    void removeDuplicates();
+
 };
 
 
