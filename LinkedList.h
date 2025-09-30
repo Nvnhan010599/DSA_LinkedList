@@ -74,6 +74,9 @@ public:
     /* Remove duplicate */
     void removeDuplicates();
 
+    /* Binary value node to decimal */
+    int binaryToDecimal();
+
 };
 
 

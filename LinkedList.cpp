@@ -309,3 +309,15 @@ void LinkedList::removeDuplicates() {
     }
 }
 
+int LinkedList::binaryToDecimal() {
+    int result = 0;
+    auto currentNode = head;
+
+    while (currentNode != nullptr) {
+        result = (result<<1)|((currentNode->value == 1)? 1 : 0);
+        currentNode = currentNode->next;
+    }
+
+    return result;
+}
+
