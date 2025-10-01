@@ -77,6 +77,8 @@ public:
     /* Binary value node to decimal */
     int binaryToDecimal();
 
+    /*  */
+    void partitionList(int x);
 };
 
 

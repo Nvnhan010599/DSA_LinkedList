@@ -321,3 +321,29 @@ int LinkedList::binaryToDecimal() {
     return result;
 }
 
+void LinkedList::partitionList(int x) {
+    auto D1 = Node(0);
+    Node* prev1Node = &D1;
+    auto D2 = Node(0);
+    Node* prev2Node = &D2;
+
+    if (head != nullptr) {
+        auto currentNode = head;
+        while (currentNode != nullptr) {
+            if (currentNode->value < x) {
+                prev1Node->next = currentNode;
+                prev1Node = currentNode;
+            }
+            else {
+                prev2Node->next = currentNode;
+                prev2Node = currentNode;
+            }
+            currentNode = currentNode->next;
+        }
+
+        prev1Node->next = D2.next;
+        prev2Node->next = nullptr;
+        head = D1.next;
+    }
+}
+
