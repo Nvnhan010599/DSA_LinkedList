@@ -347,3 +347,31 @@ void LinkedList::partitionList(int x) {
     }
 }
 
+void LinkedList::reverseBetween(int m, int n) {
+    int index = 0;
+    auto dummyNode = Node(0);
+    Node* prevNode = &dummyNode;
+    Node* currentNode = head;
+    Node* moveNode = nullptr;
+
+    dummyNode.next = head;
+
+    if (m >= n) return;
+
+    while ((index < n) && (currentNode != nullptr) && (currentNode->next != nullptr))  {
+
+        if (index < m) {
+            prevNode = currentNode;
+            currentNode = prevNode->next;
+        }
+        else {
+            moveNode = currentNode->next;
+            currentNode->next = moveNode->next;
+            moveNode->next = prevNode->next;
+            prevNode->next = moveNode;
+        }
+        index++;
+    }
+    head = dummyNode.next;
+}
+

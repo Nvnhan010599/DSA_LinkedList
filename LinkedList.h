@@ -77,8 +77,11 @@ public:
     /* Binary value node to decimal */
     int binaryToDecimal();
 
-    /*  */
+    /* Partition List */
     void partitionList(int x);
+
+    /* Reverse Between */
+    void reverseBetween(int m, int n);
 };
 
 
