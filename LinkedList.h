@@ -82,6 +82,9 @@ public:
 
     /* Reverse Between */
     void reverseBetween(int m, int n);
+
+    /* Swap Pairs */
+    void swapPairs();
 };
 
 

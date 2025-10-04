@@ -375,3 +375,27 @@ void LinkedList::reverseBetween(int m, int n) {
     head = dummyNode.next;
 }
 
+void LinkedList::swapPairs() {
+    Node dummyNode = Node(0);
+    Node* currentNode = head;
+    Node* prevNode = &dummyNode;
+    Node* nextNode = nullptr;
+
+    dummyNode.next = head;
+    while ((currentNode != nullptr) && (currentNode->next != nullptr)) {
+        /* Next node */
+        nextNode = currentNode->next;
+
+        /* Swap node */
+        currentNode->next = nextNode->next;
+        prevNode->next = nextNode;
+        nextNode->next = currentNode;
+
+        /* Prepare next step */
+        prevNode = currentNode;
+        currentNode = currentNode->next;
+
+    }
+    head = dummyNode.next;
+}
+
