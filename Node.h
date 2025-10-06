@@ -11,6 +11,7 @@ class Node {
 public:
     int value;
     Node* next;
+    Node* prev;
 
     /* Constructor */
     explicit Node (int value_);

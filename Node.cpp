@@ -7,4 +7,5 @@
 Node::Node(const int value_) {
     this->value = value_;
     this->next = nullptr;
+    this->prev = nullptr;
 }

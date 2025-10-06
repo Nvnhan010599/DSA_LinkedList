@@ -7,4 +7,6 @@ add_executable(LinkedList main.cpp
         LinkedList.cpp
         LinkedList.h
         Node.cpp
-        Node.h)
+        Node.h
+        DoublyLinkedList.cpp
+        DoublyLinkedList.h)

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Node.h"
 #include "LinkedList.h"
+#include "DoublyLinkedList.h"
 
 using namespace std;
 
